@@ -71,14 +71,46 @@ runBuildAndRunApp()
     #gradew command to build
     #reference: https://developer.android.google.cn/studio/build/building-cmdline.html?hl=zh-cn
 
-#check all gradlew tasks
-./gradlew tasks
-#clean/build app
-./gradlew build
-./gradlew clean
-#install and uninstall
-./gradlew install/uninstall
+    #check all gradlew tasks
+    echo "******************************************"
+    echo "  check gradlew tasks for this project... "
+    echo "    ./gradlew tasks"
+    echo "*******************************************"
+    ./gradlew tasks
 
+    #clean/build app
+    echo "***********************************"
+    echo "  gradlew clean previous build..."
+    echo "    ./gradlew clean"
+    echo "***********************************"
+    ./gradlew clean
+
+    #clean/build app
+    echo "***********************************"
+    echo "  gradlew  build..."
+    echo "    ./gradlew build"
+    echo "***********************************"
+    ./gradlew build
+
+    sleep 1
+    #install and uninstall
+    echo "***********************************"
+    echo "  gradlew  install Debug..."
+    echo "    ./gradlew installDebug"
+    echo "***********************************"
+    ./gradlew installDebug
+
+    sleep 2
+    echo "***********************************"
+    echo "  gradlew  uninstall Debug..."
+    echo "    ./gradlew uninstallDebug"
+    echo "***********************************"
+    ./gradlew uninstallDebug
+
+    echo "****************************************"
+    echo "  gradlew  pipeline script passed!...   "
+    echo "    clean/build/install/uninstall"
+    echo "****************************************"
 }
 
 
@@ -90,6 +122,9 @@ runMain()
 
     sleep 2
     runUnInstallApp
+
+    sleep 2
+    runBuildAndRunApp
 }
 
 runMain
