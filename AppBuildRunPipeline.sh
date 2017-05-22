@@ -4,6 +4,7 @@ runInit()
 {
     PackageName="com.example.huade.myfirstapp"
     ApkFile="app/build/outputs/apk/app-debug.apk"
+    AVDTarget="Pixel_API_23"
 
 }
 
@@ -113,6 +114,28 @@ runBuildAndRunApp()
     echo "****************************************"
 }
 
+runAVDInstall()
+{
+     echo "****************************************"
+     echo "  Install app on emulator...   "
+     echo "     emulator @${AVDTarget}"
+     echo "****************************************"
+
+     emulator @${AVDTarget}
+
+     echo "****************************************"
+     echo "  uninstall app on emulator...   "
+     echo "     adb uninstall ${PackageName}"
+     echo "****************************************"
+     adb uninstall ${PackageName}
+
+     echo "****************************************"
+     echo "  install app on emulator...   "
+     echo "     adb install ${PackageName}"
+     echo "****************************************"
+     adb install ${ApkFile}
+}
+
 
 runMain()
 {
@@ -125,6 +148,9 @@ runMain()
 
     sleep 2
     runBuildAndRunApp
+
+    sleep 2
+    runAVDInstall
 }
 
 runMain
