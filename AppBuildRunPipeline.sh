@@ -68,6 +68,17 @@ runBuildAndRunApp()
     echo "  PackageName is ${PackageName}"
     echo "***********************************"
 
+    #gradew command to build
+    #reference: https://developer.android.google.cn/studio/build/building-cmdline.html?hl=zh-cn
+
+#check all gradlew tasks
+./gradlew tasks
+#clean/build app
+./gradlew build
+./gradlew clean
+#install and uninstall
+./gradlew install/uninstall
+
 }
 
 
