@@ -51,6 +51,14 @@ BasicAdbCommand()
     echo " list all packages installed on device"
     adb shell pm list package
 
+    #install app step
+    #push, and install via pm command
+    adb push /Users/../xx/../MyFirstApp/app/build/outputs/apk/app-debug.apk /data/local/tmp/com.example.huade.myfirstapp
+    adb shell pm install -r "/data/local/tmp/com.example.huade.myfirstapp"
+
+    #run app with am start command
+    adb shell am start -n "com.example.huade.myfirstapp/com.example.huade.myfirstapp.MainActivity" -a android.intent.action.MAIN -c android.intent.category.LAUNCHER
+
 }
 
 runBuildAndRunApp()
